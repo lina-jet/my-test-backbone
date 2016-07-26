@@ -26,7 +26,12 @@ app.NewView = Backbone.View.extend({
 	},
 
 	addLike: function(){
-		console.log(this);
+		var likes = this.model.get('likes');
+		this.model.set('likes', likes + 1);
+		this.render().el;
+		this.model.save({
+			likes: likes + 1
+		})
 	},
 
 	delete: function(){
